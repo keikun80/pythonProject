@@ -58,25 +58,8 @@ def readfiles(ttype):
     fileExt = ttype
     arr = [ os.path.join(dir, file) for file in os.listdir(dir) if file.endswith(fileExt)]
     for fileName in arr:
-        #t = threading.Thread(target=judgeArticle, args=(fileName, ))
-        #t.start()
-        judgeArticle(fileName)
-   #     with open(fileName,'rb') as f:
-   #         # retData.append(pickle.load(f))
-   #         posWords = datafilter(pickle.load(f))
-   #         pos = 0
-   #         nag = 0
-   #         net = 0
-   #         for word in posWords:
-   #             s_word = ksl.data_list(word)
-   #             if (s_word > 0):
-   #                 pos = pos + s_word
-   #             elif (s_word < 0):
-   #                 nag = nag + s_word
-   #             else:
-   #                 net = net + 1
-   #         print(f'{fileName}, {pos}, {nag}, {net}')
-   #         #print(f'{fileName}, {posWords}')
+        t = threading.Thread(target=judgeArticle, args=(fileName, ))
+        t.start()
     return retData
 
 def judgeArticle(fileName):
@@ -94,6 +77,7 @@ def judgeArticle(fileName):
                 nag = nag + s_word
             else:
                 net = net + 1
+        print(f'{fileName}, {pos}, {nag}, {net}')
         #print(f'{fileName}, {pos}, {nag}, {net}')
         print(f'{unquote(fileName[5:-4])}, {pos},{nag}, {net}')
         # print(f'{fileName}, {posWords}')
