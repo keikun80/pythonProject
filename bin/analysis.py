@@ -77,7 +77,7 @@ def judgeArticle(fileName):
                 nag = nag + s_word
             else:
                 net = net + 1
-        print(f'{fileName}, {pos}, {nag}, {net}')
+        #print(f'{fileName}, {pos}, {nag}, {net}')
         #print(f'{fileName}, {pos}, {nag}, {net}')
         print(f'{unquote(fileName[5:-4])}, {pos},{nag}, {net}')
         # print(f'{fileName}, {posWords}')
