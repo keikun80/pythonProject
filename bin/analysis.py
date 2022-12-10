@@ -1,5 +1,6 @@
 import os , sys
 import pickle
+from urllib.parse import urlparse, urlencode, quote, unquote
 import knusl
 import json
 import threading
@@ -57,9 +58,9 @@ def readfiles(ttype):
     fileExt = ttype
     arr = [ os.path.join(dir, file) for file in os.listdir(dir) if file.endswith(fileExt)]
     for fileName in arr:
-        t = threading.Thread(target=judgeArticle, args=(fileName, ))
-        t.start()
-        #judgeArticle(fileName)
+        #t = threading.Thread(target=judgeArticle, args=(fileName, ))
+        #t.start()
+        judgeArticle(fileName)
    #     with open(fileName,'rb') as f:
    #         # retData.append(pickle.load(f))
    #         posWords = datafilter(pickle.load(f))
@@ -93,7 +94,8 @@ def judgeArticle(fileName):
                 nag = nag + s_word
             else:
                 net = net + 1
-        print(f'{fileName}, {pos}, {nag}, {net}')
+        #print(f'{fileName}, {pos}, {nag}, {net}')
+        print(f'{unquote(fileName[5:-4])}, {pos},{nag}, {net}')
         # print(f'{fileName}, {posWords}')
 
 

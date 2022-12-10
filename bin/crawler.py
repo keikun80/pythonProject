@@ -113,7 +113,7 @@ def extractDocs(url, pageChunk):
 	#print("extract Docs")
 	text = BeautifulSoup(pageChunk.content, 'html.parser').get_text()
 	writeText(url, okt.pos(text,norm=True, stem=True), "pos")
-	writeText(url, okt.phrases(text), "phrase")
+	writeText(url, okt.phrases(text), "phr")
 	#print(okt.nouns(text))
 	#print(okt.phrases(text))
 
