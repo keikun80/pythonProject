@@ -3,8 +3,8 @@ import pickle
 import knusl
 import json
 import threading
-import pandas as pd
-import numpy as np
+#import pandas as pd
+#import numpy as np
 DATADIR = 'DATA'
 SEPARATOR = '/'
 class KnuSL():
@@ -37,17 +37,10 @@ ksl = KnuSL
 def datafilter(dataSet):
     retData = list()
     for line in dataSet:
-        #print(line)
-        #for words in line:
-          #print(words)
         if "Verb" in line:
-            #print(line[0])
-            #print(words)
             retData.append(line[0])
         if "Adj" in line:
-            # print(line[0])
             retData.append(line[0])
-            #print(words)
     return retData
 
 
@@ -59,28 +52,10 @@ def readfiles(ttype):
     for fileName in arr:
         t = threading.Thread(target=judgeArticle, args=(fileName, ))
         t.start()
-        #judgeArticle(fileName)
-   #     with open(fileName,'rb') as f:
-   #         # retData.append(pickle.load(f))
-   #         posWords = datafilter(pickle.load(f))
-   #         pos = 0
-   #         nag = 0
-   #         net = 0
-   #         for word in posWords:
-   #             s_word = ksl.data_list(word)
-   #             if (s_word > 0):
-   #                 pos = pos + s_word
-   #             elif (s_word < 0):
-   #                 nag = nag + s_word
-   #             else:
-   #                 net = net + 1
-   #         print(f'{fileName}, {pos}, {nag}, {net}')
-   #         #print(f'{fileName}, {posWords}')
     return retData
 
 def judgeArticle(fileName):
     with open(fileName, 'rb') as f:
-        # retData.append(pickle.load(f))
         posWords = datafilter(pickle.load(f))
         pos = 0
         nag = 0
@@ -94,7 +69,6 @@ def judgeArticle(fileName):
             else:
                 net = net + 1
         print(f'{fileName}, {pos}, {nag}, {net}')
-        # print(f'{fileName}, {posWords}')
 
 
 if __name__ == "__main__":
